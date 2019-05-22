@@ -6,7 +6,6 @@ import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,7 +23,7 @@ public class SyntaxExampleController {
     static final String SYNTAX_EXAMPLE_LINK = "/syntax/example";
 
     @GetMapping(value = "/syntax/example")
-    public String getSyntaxExamplePage(Model model, ) {
+    public String getSyntaxExamplePage(Model model) {
         model.addAttribute("companiesUrl", "/api/companies");
         model.addAttribute("defaultName", "Peter Parker");
         model.addAttribute("greetings", "http://localhost:8081/syntax/example/link-expression(status=${'test'}, position=${'center'})}");
@@ -34,8 +33,6 @@ public class SyntaxExampleController {
         model.addAttribute("employeeObject", getTestEmployee());
         return INDEX_PAGE;
     }
-
-    public void test(Dto dto, BindingResult result)
 
     @GetMapping(value = "/syntax/example/link-expression")
     public ModelAndView linkExpressionMethod(@ModelAttribute String status, ModelAndView model) {
