@@ -1,12 +1,5 @@
-1.Create sing up page with obligatory fields:
-    1.1. firstName;
-    1.2. lastName;
-    1.3. email;
-    1.4. password;
-    1.5. confirmPassword;
-2. Accept this data in appropriate сontroller's method.
-3. Save data, and then return full name (first name + last name), on the greeting page. Example: Hello Peter Parker!
+1.You should add security layer (form login authentication) to "send email project". 
+   Implement: index.html, login.html, (email payload) page, 
+   where user should provide data for email. Unauthenticated users could not send email.
 
-Bonus task:
-- Add filed validation to your dto that you accept in controller.
-- Show field errors on sign up page if they are exists.
+https://github.com/inventorsoft-academy/spring-security.git

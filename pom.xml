@@ -21,10 +21,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<lombock.version>1.16.20</lombock.version>
+		<java.version>11</java.version>
+		<lombock.version>1.18.12</lombock.version>
 		<guava.version>26.0-jre</guava.version>
-		<java.version>1.8</java.version>
 		<devtools.version>2.0.4.RELEASE</devtools.version>
 		<thymelaf.layout.version>2.3.0</thymelaf.layout.version>
 	</properties>
@@ -44,22 +43,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.25.0-GA</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<!-- Thymeleaf layout dialect-->
-		<dependency>
-			<groupId>nz.net.ultraq.thymeleaf</groupId>
-			<artifactId>thymeleaf-layout-dialect</artifactId>
-			<version>2.3.0</version>
 		</dependency>
 
 		<!-- Other -->
@@ -95,10 +88,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.8.0</version>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
+					<release>11</release>
 				</configuration>
 			</plugin>
 			<plugin>

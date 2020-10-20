@@ -21,6 +21,6 @@ public class DefaultAuthenticationSuccessHandler extends SimpleUrlAuthentication
 	@Override
 	public void onAuthenticationSuccess(final HttpServletRequest request, final HttpServletResponse response, final Authentication authentication) throws IOException {
 		log.debug("Authentication success handler is invoked");
-		response.sendRedirect("/api/companies");
+		response.sendRedirect("/api/users");
 	}
 }
