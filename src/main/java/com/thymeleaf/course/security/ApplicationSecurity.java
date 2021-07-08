@@ -29,20 +29,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/api/**").authenticated()
 
-                .and()
-                .formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/login-resource")
-                .defaultSuccessUrl("/api/users", true)
-                .failureUrl("/login.html?error=true")
-                .successHandler(new DefaultAuthenticationSuccessHandler())
-
-                .and()
-                .logout()
-                .addLogoutHandler(new SecurityContextLogoutHandler())
-                .logoutSuccessUrl("/login")
-                .deleteCookies("JSESSIONID")
-
+                .and().httpBasic()
 
                 /* Configuration for stateless application */
 
@@ -55,7 +42,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/error.html")
 
-                .and()
+                .and().sessionManagement().disable()
                 .csrf().disable();
     }
 
