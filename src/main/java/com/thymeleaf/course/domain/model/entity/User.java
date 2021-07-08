@@ -1,5 +1,6 @@
 package com.thymeleaf.course.domain.model.entity;
 
+import com.thymeleaf.course.domain.model.dictionary.Role;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -30,5 +31,5 @@ public class User {
 
     String password;
 
-    String role;
+    Role role;
 }

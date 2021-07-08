@@ -1,6 +1,8 @@
 package com.thymeleaf.course.domain.service;
 
 import com.google.common.collect.Lists;
+import com.thymeleaf.course.domain.model.dictionary.Role;
+import com.thymeleaf.course.domain.model.dto.UserDto;
 import com.thymeleaf.course.domain.model.dto.UserSignUpRequest;
 import com.thymeleaf.course.domain.model.entity.User;
 import com.thymeleaf.course.domain.repository.UserRepository;
@@ -12,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -28,6 +31,25 @@ public class UserService {
     @Transactional(readOnly = true)
     public List<User> getAll() {
         return Lists.newArrayList(userRepository.findAll());
+    }
+
+    @Transactional(readOnly = true)
+    public List<User> getByRole(Role role) {
+        return getAll().stream()
+                .filter(user -> user.getRole().equals(role))
+                .collect(Collectors.toList());
+    }
+
+    public List<UserDto> getAllUsers() {
+        return getByRole(Role.USER).stream()
+                .map(UserMapper::mapUser2UserDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<UserDto> getAllAdmins() {
+        return getByRole(Role.ADMIN).stream()
+                .map(UserMapper::mapUser2UserDto)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)

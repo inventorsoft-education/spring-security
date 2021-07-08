@@ -1,5 +1,6 @@
 package com.thymeleaf.course;
 
+import com.thymeleaf.course.domain.model.dictionary.Role;
 import com.thymeleaf.course.domain.model.dto.UserSignUpRequest;
 import com.thymeleaf.course.domain.service.UserService;
 import lombok.AccessLevel;
@@ -30,6 +31,7 @@ public class DBInitializer {
         user1.setEmail("firstuseremail@test.com");
         user1.setFirstName("first user");
         user1.setLastName("first user");
+        user1.setRole(Role.USER);
 
         /* Use in a case when don't have encoder. */
 //        user1.setPassword("user1Password");
@@ -40,6 +42,7 @@ public class DBInitializer {
         user2.setEmail("seconduseremail@test.com");
         user2.setFirstName("second user");
         user2.setLastName("second user");
+        user2.setRole(Role.USER);
 
         /* Use in a case when don't have encoder. */
 //        user2.setPassword("user2Password");
@@ -49,6 +52,7 @@ public class DBInitializer {
         user3.setEmail("thirduseremail@test.com");
         user3.setFirstName("third user");
         user3.setLastName("third user");
+        user3.setRole(Role.ADMIN);
 
         /* Use in a case when don't have encoder. */
 //        user3.setPassword("user3Password");
