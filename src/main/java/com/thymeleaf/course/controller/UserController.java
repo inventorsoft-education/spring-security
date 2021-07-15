@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserController {
 
-    final UserService userService;
+    UserService userService;
 
     /* TODO entity shouldn't be send directly without advanced mapping. */
     @GetMapping

@@ -17,7 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UserService {
 
-    final UserRepository userRepository;
+    UserRepository userRepository;
 
     @Transactional
     public void saveUser(UserSignUpRequest request) {
