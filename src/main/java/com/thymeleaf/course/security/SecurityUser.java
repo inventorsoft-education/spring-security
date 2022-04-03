@@ -29,7 +29,7 @@ public class SecurityUser extends org.springframework.security.core.userdetails.
         super(
                 user.getEmail(),
                 user.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getRole()))
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + user.getType().name()))
         );
 
         this.id = user.getId();

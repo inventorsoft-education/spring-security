@@ -1,5 +1,6 @@
 package com.thymeleaf.course;
 
+import com.thymeleaf.course.domain.model.dictionary.Type;
 import com.thymeleaf.course.domain.model.dto.UserSignUpRequest;
 import com.thymeleaf.course.domain.service.UserService;
 import lombok.AccessLevel;
@@ -30,6 +31,7 @@ public class DBInitializer {
         user1.setEmail("firstuseremail@test.com");
         user1.setFirstName("first user");
         user1.setLastName("first user");
+        user1.setType(Type.USER);
 
         /* Use in a case when don't have encoder. */
 //        user1.setPassword("user1Password");
@@ -40,19 +42,21 @@ public class DBInitializer {
         user2.setEmail("seconduseremail@test.com");
         user2.setFirstName("second user");
         user2.setLastName("second user");
+        user2.setType(Type.USER);
 
         /* Use in a case when don't have encoder. */
 //        user2.setPassword("user2Password");
         user2.setPassword(encoder.encode("user2Password"));
 
         UserSignUpRequest user3 = new UserSignUpRequest();
-        user3.setEmail("thirduseremail@test.com");
-        user3.setFirstName("third user");
-        user3.setLastName("third user");
+        user3.setEmail("adminmail@test.com");
+        user3.setFirstName("admin");
+        user3.setLastName("adminovych");
+        user3.setType(Type.ADMIN);
 
         /* Use in a case when don't have encoder. */
 //        user3.setPassword("user3Password");
-        user3.setPassword(encoder.encode("user3Password"));
+        user3.setPassword(encoder.encode("adminPassword"));
 
         Arrays.asList(user1, user2, user3)
                 .forEach(userService::saveUser);

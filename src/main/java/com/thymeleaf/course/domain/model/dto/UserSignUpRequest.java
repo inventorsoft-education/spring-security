@@ -1,5 +1,6 @@
 package com.thymeleaf.course.domain.model.dto;
 
+import com.thymeleaf.course.domain.model.dictionary.Type;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
@@ -13,5 +14,6 @@ public class UserSignUpRequest {
     String email;
     String password;
     String confirmPassword;
+    Type type;
 
 }

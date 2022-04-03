@@ -1,6 +1,6 @@
 package com.thymeleaf.course.domain.model.dictionary;
 
-public enum Gender {
+public enum Type {
 
-    MALE, FEMALE;
+    USER, ADMIN
 }
