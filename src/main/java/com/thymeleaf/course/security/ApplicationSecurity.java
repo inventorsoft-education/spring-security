@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,6 +17,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 @EnableWebSecurity
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 
    UserDetailServiceImpl userDetailService;
@@ -27,20 +29,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/api/**").authenticated()
 
-                .and()
-                .formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/login-resource")
-                .defaultSuccessUrl("/api/users", true)
-                .failureUrl("/login.html?error=true")
-                .successHandler(new DefaultAuthenticationSuccessHandler())
-
-                .and()
-                .logout()
-                .addLogoutHandler(new SecurityContextLogoutHandler())
-                .logoutSuccessUrl("/login")
-                .deleteCookies("JSESSIONID")
-
+                .and().httpBasic()
 
                 /* Configuration for stateless application */
 
@@ -53,7 +42,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/error.html")
 
-                .and()
+                .and().sessionManagement().disable()
                 .csrf().disable();
     }
 
