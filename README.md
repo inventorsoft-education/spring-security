@@ -1,3 +1,15 @@
-1.You should add security layer (form login authentication) to "send email project". 
-   Implement: index.html, login.html, (email payload) page, 
-   where user should provide data for email. Unauthenticated users could not send email.
+
+   CREATE TABLE Email(
+
+    id BIGINT primary key generated always as identity,
+    
+    recipient_name varchar(100) not null,
+    
+    email_subject varchar(100) not null,
+    
+    email_body varchar(100),
+    
+    delivery_date timestamp DEFAULT CURRENT_TIMESTAMP,
+    
+    is_sent boolean
+)
